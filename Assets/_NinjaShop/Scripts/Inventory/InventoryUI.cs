@@ -1,6 +1,7 @@
 using NinjaShop.NinjaClothes;
 using NinjaShop.PlayerScripts;
 using NinjaShop.ShopScripts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -35,6 +36,19 @@ namespace NinjaShop.Inventory
             CheckInventory(player.ninjaClothsIds);
         }
 
+        private void DisableOtherSelection(List<Button> clothesButtons, int index)
+        {
+            foreach (var button in clothesButtons)
+            {
+                ClothButtonInventory buttonInventory = button.GetComponent<ClothButtonInventory>();
+                if (buttonInventory.buttonClothId == shop.hoodNinjaClothes[index].clothId) continue;
+                else
+                {
+                    buttonInventory.selectedImage.gameObject.SetActive(false);
+                }
+            }
+        }
+
         //Muste be in each button of inventory
         public void EquipHoodCloth( ClothButtonInventory clothButtonInventory)
         {
@@ -42,6 +56,8 @@ namespace NinjaShop.Inventory
             if (index < 0) return;
             playerClothes.EquipClothes(shop.hoodNinjaClothes[index]);
             clothButtonInventory.selectedImage.gameObject.SetActive(true);
+            DisableOtherSelection(hoodNinjaButtons, index);
+            
         }
         public void EquipFaceCloth(ClothButtonInventory clothButtonInventory)
         {
@@ -49,6 +65,7 @@ namespace NinjaShop.Inventory
             if (index < 0) return;
             playerClothes.EquipClothes(shop.faceNinjaClothes[index]);
             clothButtonInventory.selectedImage.gameObject.SetActive(true);
+            DisableOtherSelection(faceNinjaButtons, index);
         }
 
         public void EquipTorsoCloth(ClothButtonInventory clothButtonInventory)
@@ -57,6 +74,7 @@ namespace NinjaShop.Inventory
             if (index < 0) return;
             playerClothes.EquipClothes(shop.torsoNinjaClothes[index]);
             clothButtonInventory.selectedImage.gameObject.SetActive(true);
+            DisableOtherSelection(torsoNinjaButtons, index);
         }
 
         public void EquipPelvisCloth(ClothButtonInventory clothButtonInventory)
@@ -65,6 +83,7 @@ namespace NinjaShop.Inventory
             if (index < 0) return;
             playerClothes.EquipClothes(shop.pelvisNinjaClothes[index]);
             clothButtonInventory.selectedImage.gameObject.SetActive(true);
+            DisableOtherSelection(pelvisNinjaButtons, index);
         }
 
         private void SetButtonInfo(List<Button> buttons, List<NinjaCloth> ninjaClothes)
@@ -85,6 +104,10 @@ namespace NinjaShop.Inventory
                 if(ninjaClothesIds.Contains(buttonInfo.buttonClothId))
                 {
                     allClothButtons[i].interactable = true;
+                }
+                else
+                {
+                    allClothButtons[i].interactable = false;
                 }
                 
             }
