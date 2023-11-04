@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace NinjaShop.ShopScripts
-
 {
     public class ClothButtonInfo : MonoBehaviour
     {

@@ -12,9 +12,6 @@ namespace NinjaShop.NinjaClothes
         public int clothPrice;
  
     }
-
-   
-
 }
 public enum ClothType
 {
