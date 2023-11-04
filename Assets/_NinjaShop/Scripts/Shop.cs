@@ -18,12 +18,7 @@ namespace NinjaShop.ShopScripts
         private float sellDepreciation = 0.5f;
 
 
-        public void EquipHood(ClothButtonInfo clothButtonInfo)
-        {
-            int index = hoodNinjaClothes.FindIndex(clothId => clothId.clothId == clothButtonInfo.buttonClothId);
-            if (index < 0) return;
-            playerClothes.EquipClothes(hoodNinjaClothes[index]);
-        }
+        
 
         public void BuyCloth(ClothButtonInfo clothButtonInfo)
         {
@@ -39,6 +34,7 @@ namespace NinjaShop.ShopScripts
             clothButtonInfo.sellButton.interactable = true;
             clothButtonInfo.buyButton.interactable = false;
             clothButtonInfo.alreadyPurchased.gameObject.SetActive(true);
+            player.ninjaClothsIds.Add(clothButtonInfo.buttonClothId);
             
         }
 
@@ -50,6 +46,7 @@ namespace NinjaShop.ShopScripts
             clothButtonInfo.sellButton.interactable = false;
             clothButtonInfo.buyButton.interactable = true;
             clothButtonInfo.alreadyPurchased.gameObject.SetActive(false);
+            player.ninjaClothsIds.Remove(clothButtonInfo.buttonClothId);
 
         }
     }

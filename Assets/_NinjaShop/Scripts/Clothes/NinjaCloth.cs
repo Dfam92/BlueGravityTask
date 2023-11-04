@@ -10,9 +10,7 @@ namespace NinjaShop.NinjaClothes
         public ClothType clothType;
         public Sprite clothSprite;
         public int clothPrice;
-
-       
-        
+ 
     }
 
    

@@ -17,6 +17,9 @@ namespace NinjaShop.ShopScripts
         private void Start()
         {
             SetButtonInfo(hoodNinjaButtons, shop.hoodNinjaClothes);
+            SetButtonInfo(faceNinjaButtons, shop.faceNinjaClothes);
+            SetButtonInfo(torsoNinjaButtons, shop.torsoNinjaClothes);
+            SetButtonInfo(pelvisNinjaButtons, shop.pelvisNinjaClothes);
         }
 
         private void SetButtonInfo(List<Button> buttons, List<NinjaCloth> ninjaClothes)
