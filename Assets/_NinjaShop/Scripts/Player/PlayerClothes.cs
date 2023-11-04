@@ -11,6 +11,8 @@ namespace NinjaShop.PlayerScripts
         [SerializeField] SpriteRenderer torsoSpriteRenderer;
         [SerializeField] SpriteRenderer pelvisSpriteRenderer;
 
+        public List<string> equippedClothes = new List<string>();
+
         public void EquipClothes(NinjaCloth cloth)
         {
             switch (cloth.clothType)

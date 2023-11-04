@@ -40,6 +40,11 @@ namespace NinjaShop.ShopScripts
 
         public void SellCloth(ClothButtonInfo clothButtonInfo)
         {
+            if(playerClothes.equippedClothes.Contains(clothButtonInfo.buttonClothId))
+            {
+                Debug.Log("You Can't sell equipped clothes");
+                return;
+            }
             int clothPrice = int.Parse(clothButtonInfo.clothPrice.text);
             player.playerCoins += clothPrice;
             clothButtonInfo.clothPrice.text = clothButtonInfo.defaultPrice;

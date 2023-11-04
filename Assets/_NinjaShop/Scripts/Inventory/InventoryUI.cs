@@ -45,6 +45,7 @@ namespace NinjaShop.Inventory
                 else
                 {
                     buttonInventory.selectedImage.gameObject.SetActive(false);
+                    playerClothes.equippedClothes.Remove(buttonInventory.buttonClothId);
                 }
             }
         }
@@ -56,6 +57,7 @@ namespace NinjaShop.Inventory
             if (index < 0) return;
             playerClothes.EquipClothes(shop.hoodNinjaClothes[index]);
             clothButtonInventory.selectedImage.gameObject.SetActive(true);
+            playerClothes.equippedClothes.Add(clothButtonInventory.buttonClothId);
             DisableOtherSelection(hoodNinjaButtons, index);
             
         }
@@ -65,6 +67,7 @@ namespace NinjaShop.Inventory
             if (index < 0) return;
             playerClothes.EquipClothes(shop.faceNinjaClothes[index]);
             clothButtonInventory.selectedImage.gameObject.SetActive(true);
+            playerClothes.equippedClothes.Add(clothButtonInventory.buttonClothId);
             DisableOtherSelection(faceNinjaButtons, index);
         }
 
@@ -74,6 +77,7 @@ namespace NinjaShop.Inventory
             if (index < 0) return;
             playerClothes.EquipClothes(shop.torsoNinjaClothes[index]);
             clothButtonInventory.selectedImage.gameObject.SetActive(true);
+            playerClothes.equippedClothes.Add(clothButtonInventory.buttonClothId);
             DisableOtherSelection(torsoNinjaButtons, index);
         }
 
@@ -83,6 +87,7 @@ namespace NinjaShop.Inventory
             if (index < 0) return;
             playerClothes.EquipClothes(shop.pelvisNinjaClothes[index]);
             clothButtonInventory.selectedImage.gameObject.SetActive(true);
+            playerClothes.equippedClothes.Add(clothButtonInventory.buttonClothId);
             DisableOtherSelection(pelvisNinjaButtons, index);
         }
 
@@ -108,6 +113,7 @@ namespace NinjaShop.Inventory
                 else
                 {
                     allClothButtons[i].interactable = false;
+                    buttonInfo.selectedImage.gameObject.SetActive(false);
                 }
                 
             }
