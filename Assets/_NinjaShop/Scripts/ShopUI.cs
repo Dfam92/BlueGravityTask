@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace NinjaShop.Shop
+namespace NinjaShop.ShopScripts
 {
     public class ShopUI : MonoBehaviour
     {
@@ -29,6 +29,7 @@ namespace NinjaShop.Shop
                 buttons[i].image.sprite = ninjaClothes[i].clothSprite;
             }
         }
+
 
         
     }
