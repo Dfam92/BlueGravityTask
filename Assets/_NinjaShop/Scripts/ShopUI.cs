@@ -26,6 +26,7 @@ namespace NinjaShop.ShopScripts
                 var buttonInfo = buttons[i].GetComponent<ClothButtonInfo>();
                 buttonInfo.buttonClothId = ninjaClothes[i].clothId;
                 buttonInfo.clothPrice.text = ninjaClothes[i].clothPrice.ToString();
+                buttonInfo.defaultPrice = buttonInfo.clothPrice.text;
                 buttons[i].image.sprite = ninjaClothes[i].clothSprite;
             }
         }

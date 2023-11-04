@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
 namespace NinjaShop.ShopScripts
 
 {
@@ -9,7 +11,11 @@ namespace NinjaShop.ShopScripts
     {
         public string buttonClothId;
         public TextMeshProUGUI clothPrice;
-        public bool wasBought = false;
+        public string defaultPrice;
+        public Button buyButton;
+        public Button sellButton;
+        public Image alreadyPurchased;
+
     }
 }
 
