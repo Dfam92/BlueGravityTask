@@ -95,7 +95,6 @@ namespace NinjaShop.PlayerScripts
         {
             if(collision.gameObject.CompareTag("ShopKeeper"))
             {
-                Debug.Log("can Interact");
                 canInteract = true;
                 shopKeeperInteraction.DOFade(1, 0.5f);
                 
@@ -124,7 +123,6 @@ namespace NinjaShop.PlayerScripts
         {
             if (collision.gameObject.CompareTag("ShopKeeper"))
             {
-                Debug.Log("can not interact");
                 canInteract = false;
                 shopKeeperInteraction.DOFade(0, 0.5f);
 
