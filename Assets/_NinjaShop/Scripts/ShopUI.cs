@@ -1,6 +1,8 @@
+using DG.Tweening;
 using NinjaShop.NinjaClothes;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +14,9 @@ namespace NinjaShop.ShopScripts
         public List<Button> faceNinjaButtons = new List<Button>();
         public List<Button> torsoNinjaButtons = new List<Button>();
         public List<Button> pelvisNinjaButtons = new List<Button>();
+        public TextMeshProUGUI warningMessages;
+        public static string DontHaveMoney = "You Don't have enought money";
+        public static string CantSellEquipped = "You Can't sell equipped clothes";
         [SerializeField] Shop shop;
 
         private void Start()
@@ -34,8 +39,16 @@ namespace NinjaShop.ShopScripts
             }
         }
 
+        public void FadeWarningText(string message)
+        {
+            warningMessages.text = message;
+            warningMessages.DOFade(1, 1).OnComplete(() =>
+            {
+                warningMessages.DOFade(0, 2);
+            });
+        }
 
-        
+
     }
 }
 

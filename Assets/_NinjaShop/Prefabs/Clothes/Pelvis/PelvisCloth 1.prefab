@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clothId: Pelvis1
   clothType: 3
-  clothSprite: {fileID: 21300000, guid: c376d5b80d02ffe4ba89fd03d60ec471, type: 3}
+  clothSprite: {fileID: 21300000, guid: b1babcb6ce4ee78478abc5076a6d1b8d, type: 3}
   clothPrice: 200

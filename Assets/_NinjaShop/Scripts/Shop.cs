@@ -1,3 +1,4 @@
+using DG.Tweening;
 using NinjaShop.NinjaClothes;
 using NinjaShop.PlayerScripts;
 using System.Collections;
@@ -15,10 +16,8 @@ namespace NinjaShop.ShopScripts
         public List<NinjaCloth> pelvisNinjaClothes = new List<NinjaCloth>();
         [SerializeField] PlayerClothes playerClothes;
         [SerializeField] Player player;
+        [SerializeField] ShopUI shopUI;
         private float sellDepreciation = 0.5f;
-
-
-        
 
         public void BuyCloth(ClothButtonInfo clothButtonInfo)
         {
@@ -26,7 +25,7 @@ namespace NinjaShop.ShopScripts
             int clothPrice = int.Parse(clothButtonInfo.clothPrice.text);
             if (player.playerCoins < clothPrice)
             {
-                Debug.Log("You Don't have enought money");
+                shopUI.FadeWarningText(ShopUI.DontHaveMoney);
                 return;
             }
             player.playerCoins = player.playerCoins - clothPrice;
@@ -42,7 +41,7 @@ namespace NinjaShop.ShopScripts
         {
             if(playerClothes.equippedClothes.Contains(clothButtonInfo.buttonClothId))
             {
-                Debug.Log("You Can't sell equipped clothes");
+                shopUI.FadeWarningText(ShopUI.CantSellEquipped);
                 return;
             }
             int clothPrice = int.Parse(clothButtonInfo.clothPrice.text);
@@ -55,6 +54,8 @@ namespace NinjaShop.ShopScripts
 
         }
     }
+
+    
 
     
 }

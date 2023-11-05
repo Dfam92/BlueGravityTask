@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clothId: Face1
   clothType: 1
-  clothSprite: {fileID: 21300000, guid: 518ab34707033904cb1d99dbfcc9f4bb, type: 3}
+  clothSprite: {fileID: 21300000, guid: 7db7af78e8f9c45418a407bdd7958560, type: 3}
   clothPrice: 50
