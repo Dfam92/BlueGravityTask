@@ -1,18 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerControl : MonoBehaviour
+namespace NinjaShop.PlayerScripts
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerControl : MonoBehaviour
     {
-        
-    }
+        [SerializeField] Player player;
+        public float moveSpeed = 5f;
+        Vector2 moveInput;
 
-    // Update is called once per frame
-    void Update()
-    {
+        public void OnMove(InputValue value)
+        {
+            moveInput = value.Get<Vector2>();
+            player.playerAnimator.SetBool("isWalking", true);
+            if (moveInput.x < 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            else if (moveInput.x > 0)
+            {
+                transform.rotation = Quaternion.identity;
+            }
+            if(moveInput.x == 0 && moveInput.y == 0) {
+                player.playerAnimator.SetBool("isWalking", false);
+
+            }
+        }
+
         
+
+        void FixedUpdate()
+        {
+            Vector2 movement = moveInput * moveSpeed * Time.fixedDeltaTime;
+            GetComponent<Rigidbody2D>().MovePosition((Vector2)transform.position + movement);
+        }
     }
 }
+
