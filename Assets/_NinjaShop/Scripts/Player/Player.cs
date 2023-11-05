@@ -1,3 +1,4 @@
+using DG.Tweening;
 using NinjaShop.NinjaClothes;
 using NinjaShop.ShopScripts;
 using System.Collections;
@@ -10,7 +11,10 @@ namespace NinjaShop.PlayerScripts
     {
         [SerializeField] GameObject shopUIGameObject;
         [SerializeField] GameObject inventoryUIGameObject;
+        [SerializeField] CanvasGroup infoPanel;
         [SerializeField] TextMeshProUGUI playerCoinsHUD;
+        [SerializeField] SpriteRenderer shopKeeperInteraction;
+        [SerializeField] SfxAudioManager sfxAudioManager;
         public Animator playerAnimator;
         public int playerCoins = 0;
         public List<string> ninjaClothsIdsPurchased = new List<string>();
@@ -62,6 +66,7 @@ namespace NinjaShop.PlayerScripts
             {
                 Debug.Log("can Interact");
                 canInteract = true;
+                shopKeeperInteraction.DOFade(1, 0.5f);
                 
             }
 
@@ -70,8 +75,14 @@ namespace NinjaShop.PlayerScripts
             {
                 playerCoins += collision.GetComponent<Coin>().coinValue;
                 playerCoinsHUD.text = playerCoins.ToString();
+                sfxAudioManager.PlayCoinCollect();
                 Destroy(collision.gameObject);
                 
+            }
+
+            if(collision.gameObject.CompareTag("InfoPanel"))
+            {
+                infoPanel.DOFade(1, 0.5f);
             }
             
         }
@@ -82,7 +93,13 @@ namespace NinjaShop.PlayerScripts
             {
                 Debug.Log("can not interact");
                 canInteract = false;
+                shopKeeperInteraction.DOFade(0, 0.5f);
 
+            }
+
+            if (collision.gameObject.CompareTag("InfoPanel"))
+            {
+                infoPanel.DOFade(0, 0.5f);
             }
         }
     }

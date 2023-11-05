@@ -17,6 +17,7 @@ namespace NinjaShop.ShopScripts
         [SerializeField] PlayerClothes playerClothes;
         [SerializeField] Player player;
         [SerializeField] ShopUI shopUI;
+        [SerializeField] SfxAudioManager sfxAudioManager;
         private float sellDepreciation = 0.5f;
 
         private void Start()
@@ -35,9 +36,11 @@ namespace NinjaShop.ShopScripts
             int clothPrice = int.Parse(clothButtonInfo.clothPrice.text);
             if (player.playerCoins < clothPrice)
             {
+                sfxAudioManager.PlayError();
                 shopUI.FadeWarningText(ShopUI.DontHaveMoney);
                 return;
             }
+            sfxAudioManager.PlayClickBuy();
             player.playerCoins = player.playerCoins - clothPrice;
             UpdateCoins();
             clothButtonInfo.clothPrice.text = (clothPrice * sellDepreciation).ToString();
@@ -52,9 +55,11 @@ namespace NinjaShop.ShopScripts
         {
             if(playerClothes.equippedClothes.Contains(clothButtonInfo.buttonClothId))
             {
+                sfxAudioManager.PlayError();
                 shopUI.FadeWarningText(ShopUI.CantSellEquipped);
                 return;
             }
+            sfxAudioManager.PlayClickSell();
             int clothPrice = int.Parse(clothButtonInfo.clothPrice.text);
             player.playerCoins += clothPrice;
             UpdateCoins();

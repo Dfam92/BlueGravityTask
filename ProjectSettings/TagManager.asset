@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ShopKeeper
   - Coin
+  - InfoPanel
   layers:
   - Default
   - TransparentFX
@@ -48,4 +49,7 @@ TagManager:
     locked: 0
   - name: PropsLayer
     uniqueID: 3997426039
+    locked: 0
+  - name: InGameUI
+    uniqueID: 2596507945
     locked: 0

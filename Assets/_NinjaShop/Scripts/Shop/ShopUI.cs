@@ -33,11 +33,13 @@ namespace NinjaShop.ShopScripts
         private void OnEnable()
         {
             playerCurrentCoinsHUD.gameObject.transform.parent.gameObject.SetActive(false);
+            shop.UpdateCoins();
         }
 
         private void OnDisable()
         {
             playerCurrentCoinsHUD.gameObject.transform.parent.gameObject.SetActive(true);
+            shop.UpdateCoins();
         }
 
         private void SetButtonInfo(List<Button> buttons, List<NinjaCloth> ninjaClothes)

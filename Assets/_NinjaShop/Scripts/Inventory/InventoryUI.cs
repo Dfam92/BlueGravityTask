@@ -19,6 +19,7 @@ namespace NinjaShop.Inventory
         public List<Button> pelvisNinjaButtons = new List<Button>();
 
         [SerializeField] PlayerClothes playerClothes;
+        [SerializeField] SfxAudioManager sfxAudioManager;
         [SerializeField] Shop shop;
         [SerializeField] Player player;
         
@@ -75,6 +76,7 @@ namespace NinjaShop.Inventory
         {
             int index = ninjaClothes.FindIndex(clothId => clothId.clothId == clothButtonInventory.buttonClothId);
             if (index < 0) return;
+            sfxAudioManager.PlaySelectCloth();
             playerClothes.EquipClothes(ninjaClothes[index]);
             clothButtonInventory.selectedImage.gameObject.SetActive(true);
             playerClothes.equippedClothes.Add(clothButtonInventory.buttonClothId);
