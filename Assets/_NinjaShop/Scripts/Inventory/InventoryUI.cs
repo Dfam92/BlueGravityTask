@@ -29,12 +29,12 @@ namespace NinjaShop.Inventory
             SetButtonInfo(faceNinjaButtons, shop.faceNinjaClothes);
             SetButtonInfo(torsoNinjaButtons, shop.torsoNinjaClothes);
             SetButtonInfo(pelvisNinjaButtons, shop.pelvisNinjaClothes);
-            CheckInventory(player.ninjaClothsIds);
+            CheckInventory(player.ninjaClothsIdsPurchased);
         }
 
         private void OnEnable()
         {
-            CheckInventory(player.ninjaClothsIds);
+            CheckInventory(player.ninjaClothsIdsPurchased);
         }
 
         private void DisableOtherSelection(List<Button> clothesButtons, int index, List<NinjaCloth> ninjaClothes)

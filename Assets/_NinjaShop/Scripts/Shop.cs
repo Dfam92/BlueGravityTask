@@ -19,6 +19,16 @@ namespace NinjaShop.ShopScripts
         [SerializeField] ShopUI shopUI;
         private float sellDepreciation = 0.5f;
 
+        private void Start()
+        {
+            UpdateCoins();
+        }
+
+        private void OnEnable()
+        {
+            UpdateCoins();
+        }
+
         public void BuyCloth(ClothButtonInfo clothButtonInfo)
         {
             
@@ -29,11 +39,12 @@ namespace NinjaShop.ShopScripts
                 return;
             }
             player.playerCoins = player.playerCoins - clothPrice;
+            UpdateCoins();
             clothButtonInfo.clothPrice.text = (clothPrice * sellDepreciation).ToString();
             clothButtonInfo.sellButton.interactable = true;
             clothButtonInfo.buyButton.interactable = false;
             clothButtonInfo.alreadyPurchased.gameObject.SetActive(true);
-            player.ninjaClothsIds.Add(clothButtonInfo.buttonClothId);
+            player.ninjaClothsIdsPurchased.Add(clothButtonInfo.buttonClothId);
             
         }
 
@@ -46,12 +57,19 @@ namespace NinjaShop.ShopScripts
             }
             int clothPrice = int.Parse(clothButtonInfo.clothPrice.text);
             player.playerCoins += clothPrice;
+            UpdateCoins();
             clothButtonInfo.clothPrice.text = clothButtonInfo.defaultPrice;
             clothButtonInfo.sellButton.interactable = false;
             clothButtonInfo.buyButton.interactable = true;
             clothButtonInfo.alreadyPurchased.gameObject.SetActive(false);
-            player.ninjaClothsIds.Remove(clothButtonInfo.buttonClothId);
+            player.ninjaClothsIdsPurchased.Remove(clothButtonInfo.buttonClothId);
 
+        }
+
+        public void UpdateCoins()
+        {
+            shopUI.playerCurrentCoins.text = player.playerCoins.ToString();
+            shopUI.playerCurrentCoinsHUD.text = player.playerCoins.ToString();
         }
     }
 

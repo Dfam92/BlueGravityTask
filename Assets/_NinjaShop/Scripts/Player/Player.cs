@@ -7,7 +7,7 @@ namespace NinjaShop.PlayerScripts
     public class Player : MonoBehaviour
     {
         public int playerCoins = 0;
-        public List<string> ninjaClothsIds = new List<string>();
+        public List<string> ninjaClothsIdsPurchased = new List<string>();
     }
 }
 

@@ -10,14 +10,17 @@ namespace NinjaShop.ShopScripts
 {
     public class ShopUI : MonoBehaviour
     {
+        [SerializeField] Shop shop;
+
         public List<Button> hoodNinjaButtons = new List<Button>();
         public List<Button> faceNinjaButtons = new List<Button>();
         public List<Button> torsoNinjaButtons = new List<Button>();
         public List<Button> pelvisNinjaButtons = new List<Button>();
         public TextMeshProUGUI warningMessages;
+        public TextMeshProUGUI playerCurrentCoins;
+        public TextMeshProUGUI playerCurrentCoinsHUD;
         public static string DontHaveMoney = "You Don't have enought money";
         public static string CantSellEquipped = "You Can't sell equipped clothes";
-        [SerializeField] Shop shop;
 
         private void Start()
         {
@@ -25,6 +28,16 @@ namespace NinjaShop.ShopScripts
             SetButtonInfo(faceNinjaButtons, shop.faceNinjaClothes);
             SetButtonInfo(torsoNinjaButtons, shop.torsoNinjaClothes);
             SetButtonInfo(pelvisNinjaButtons, shop.pelvisNinjaClothes);
+        }
+
+        private void OnEnable()
+        {
+            playerCurrentCoinsHUD.gameObject.transform.parent.gameObject.SetActive(false);
+        }
+
+        private void OnDisable()
+        {
+            playerCurrentCoinsHUD.gameObject.transform.parent.gameObject.SetActive(true);
         }
 
         private void SetButtonInfo(List<Button> buttons, List<NinjaCloth> ninjaClothes)
